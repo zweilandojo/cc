@@ -18,8 +18,7 @@ const Home = ({ data: { loading, error, posts, postsConnection, networkStatus },
                 <div className='Home-placeholder border-b border-grey-light'>
                   <img
                     alt={post.title}
-                    className='Home-img'
-                    src={`https://media.graphcms.com/resize=w:600/${post.coverImage.handle}`}
+                    src={`https://media.graphcms.com/resize=w:614,fit:crop/${post.coverImage.handle}`}
                   />
                 </div>
                 <div className="px-6 pt-4">
