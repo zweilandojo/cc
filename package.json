@@ -9,6 +9,7 @@
     "apollo-cache-inmemory": "^1.1.1",
     "apollo-client": "^2.0.3",
     "apollo-link-http": "^1.2.0",
+    "eslint": "^5.11.0",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.5.0",
     "react": "^16.1.1",
@@ -26,7 +27,7 @@
     "lint": "standard --fix"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.2",
+    "babel-eslint": "^8.2.6",
     "standard": "^10.0.3"
   },
   "standard": {
