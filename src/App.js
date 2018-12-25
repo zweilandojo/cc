@@ -12,7 +12,7 @@ const App = () => (
   <Router>
     <div>
       <Header />
-      <main className="pt-16">
+      <main className="py-10 md:py-16">
         <Route exact path='/' component={Home} />
         <Route path='/about' component={About} />
         <Route path='/post/:slug' component={Post} />

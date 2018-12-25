@@ -13,12 +13,11 @@ const Home = ({ data: { loading, error, posts, postsConnection, networkStatus },
   if (error) return <h1>Error fetching posts!</h1>
   if (posts && postsConnection) {
     const areMorePosts = posts.length < postsConnection.aggregate.count
-
     return (
       <section>
         <ul className='Home-ul'>
           {posts.map(post => (
-            <li className='Home-li border border-grey-light bg-white py-4 rounded' key={`post-${post.id}`}>
+            <li className='Home-li border-t border-b sm:border border-grey-light bg-white py-4 sm:rounded' key={`post-${post.id}`}>
               <div className='w-full'>
                 <h3 className="text-base px-6 py-4 pt-0 border-b border-grey-light">
                   {post.title}
