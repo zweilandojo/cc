@@ -4,6 +4,9 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import Markdown from 'react-markdown'
 
+// Assets
+import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
+
 const POSTS_PER_PAGE = 10
 
 const Home = ({ data: { loading, error, posts, postsConnection, networkStatus }, loadMorePosts }) => {
@@ -51,7 +54,7 @@ const Home = ({ data: { loading, error, posts, postsConnection, networkStatus },
       </section>
     )
   }
-  return <h2>Loading posts...</h2>
+  return <div className="w-full text-center my-4"><img src={LoadingGif} className="w-16 h-16 mx-auto" alt="Loading post..." /></div>
 }
 
 export const posts = gql`

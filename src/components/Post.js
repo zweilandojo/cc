@@ -3,6 +3,9 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import Markdown from 'react-markdown'
 
+// Assets
+import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
+
 const Post = ({ data: { loading, error, post } }) => {
   if (error) return <h1>Error fetching the post!</h1>
   if (!loading) {
@@ -29,7 +32,7 @@ const Post = ({ data: { loading, error, post } }) => {
       </article>
     )
   }
-  return <h2>Loading post...</h2>
+  return <div className="w-full text-center my-4"><img src={LoadingGif} className="w-16 h-16 mx-auto" alt="Loading post..." /></div>
 }
 
 export const singlePost = gql`

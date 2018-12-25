@@ -19,7 +19,7 @@ const App = () => (
 
         <Route path='/create' component={Create} />
       </main>
-      <footer className="text-center py-8">
+      <footer className="border-t border-grey-light text-center py-8 max-w-xl mx-auto">
         <NavLink
           to='/about'
           className='Header-navLink px-2'
