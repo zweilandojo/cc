@@ -14,9 +14,8 @@ main {
   padding: 0 24px;
 }
 a {
-  color: #000;
+  color: #003569;
   text-decoration: none;
-  font-weight: bold;
 }
 img {
   display: block;
@@ -25,7 +24,18 @@ article {
   margin: 0 auto;
 }
 
+.Home-li a {
+  font-weight: bold;
+  color: #000;
+}
+
+/* Colors */
+.text-blue {color: #003569;}
+
 /* Header styles */
+.app-logo:active {
+  opacity: .5;
+}
 .Header-header {}
 .Header-h1 {}
 .Header-nav {}
