@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import Markdown from 'react-markdown'
 
 const POSTS_PER_PAGE = 10
 
@@ -14,18 +15,24 @@ const Home = ({ data: { loading, error, posts, postsConnection, networkStatus },
         <ul className='Home-ul'>
           {posts.map(post => (
             <li className='Home-li border border-grey-light bg-white py-4 rounded' key={`post-${post.id}`}>
-              <Link to={`/post/${post.id}`} className='Home-link'>
-                <div className='Home-placeholder border-b border-grey-light'>
+              <div className='Home-link'>
+                <h3 className="text-base px-6 py-4 pt-0 border-b border-grey-light">
+                  {post.title}
+                </h3>
+                <Link to={`/post/${post.id}`} className='block Home-placeholder border-b border-grey-light'>
                   <img
                     alt={post.title}
                     src={`https://media.graphcms.com/resize=w:614,fit:crop/${post.coverImage.handle}`}
                   />
-                </div>
+                </Link>
                 <div className="px-6 pt-4">
-                  <h3 className="text-lg">{post.title}</h3>
-                  <p className="text-xs font-normal">{post.tags}</p>
+                  <Markdown
+                    source={post.content}
+                    escapeHtml={false}
+                  />
+                  <p className="mt-4 text-xs font-normal">{post.tags}</p>
                 </div>
-              </Link>
+              </div>
             </li>
           ))}
         </ul>
@@ -48,6 +55,7 @@ export const posts = gql`
       id
       slug
       title
+      content
       dateAndTime
       coverImage {
         handle

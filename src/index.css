@@ -18,6 +18,9 @@ a {
   text-decoration: none;
   font-weight: bold;
 }
+img {
+  display: block;
+}
 article {
   margin: 0 auto;
 }

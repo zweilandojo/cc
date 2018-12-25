@@ -2,8 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 export default () => (
-  <header className='Header-header flex bg-white border-b border-grey-light mb-8 p-4'>
-    <h1 className='flex-1 ml-0 md:ml-8'>
+  <header className='Header-header fixed pin-t w-full flex bg-white border-b border-grey-light mb-8 p-3'>
+    <h1 className='flex-1 ml-0 md:ml-8 text-3xl'>
       <NavLink exact to='/' className="text-black">Memory</NavLink>
     </h1>
     <nav className='Header-nav pt-3 md:mr-8 flex-1 text-right'>
