@@ -7,12 +7,15 @@ const Post = ({ data: { loading, error, post } }) => {
   if (error) return <h1>Error fetching the post!</h1>
   if (!loading) {
     return (
-      <article>
-        <h1>{post.title}</h1>
-        <div className='Post-placeholder'>
+      <article className="border border-grey-light rounded">
+        <h1 className="py-4 px-8 text-xl">
+          {post.title}
+        </h1>
+
+        <div className='Post-placeholder mb-4'>
           <img
             alt={post.title}
-            src={`https://media.graphcms.com/resize=w:650,h:366,fit:crop/${post.coverImage.handle}`}
+            src={`https://media.graphcms.com/resize=w:614,fit:crop/${post.coverImage.handle}`}
           />
         </div>
         <Markdown

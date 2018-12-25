@@ -1,47 +1,33 @@
 /* Global styles */
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.5;
+  background: #fafafa;
 }
 main {
-  max-width: 650px;
-  margin: 32px auto;
+  max-width: 614px;
+  margin: 2rem auto;
   padding: 0 24px;
 }
 a {
-  color: deepskyblue;
+  color: #000;
   text-decoration: none;
+  font-weight: bold;
 }
 article {
   margin: 0 auto;
-  max-width: 650px;
 }
 
 /* Header styles */
-.Header-header {
-  padding: 24px 32px;
-  margin-bottom: 32px;
-  text-align: center;
-}
-.Header-h1 {
-  font-weight: 100;
-}
-.Header-nav {
-  max-width: 650px;
-  margin: 0 auto;
-}
-.Header-navLink {
-  font-size: 18px;
-  margin-right: 16px;
-}
-.Header-isActive {
-  font-weight: bold;
-  text-decoration: underline;
-}
+.Header-header {}
+.Header-h1 {}
+.Header-nav {}
+.Header-navLink {}
+.Header-isActive {}
 
 /* Home */
 .Home-ul {
@@ -51,25 +37,24 @@ article {
   display: flex;
   align-items: center;
   margin-bottom: 16px;
-  border: 1px solid #eee;
   overflow: hidden;
   border-radius: 5px;
 }
 .Home-link {
-  display: flex;
   color: #000;
 }
-.Home-link:hover {
-  box-shadow: 1px 1px 5px #999;
-}
 .Home-placeholder {
-  background-color: #eee;
-  min-width: 100px;
-  margin-right: 24px;
+  background-color: white;
+  max-width: 614px;
+  overflow: hidden;
+  display: flex;
 }
 .Home-img {
-  display: block;
-  height: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
 }
 .Home-showMoreWrapper {
   display: flex;
@@ -82,7 +67,7 @@ article {
   font-weight: bold;
   text-transform: uppercase;
   padding: 16px 24px;
-  background: deepskyblue;
+  background: #000;
   border: none;
   border-radius: 0;
   cursor: pointer;
@@ -106,6 +91,6 @@ article {
 
 /* Post */
 .Post-placeholder {
-  height: 366px;
+  max-width: 614px;
   background-color: #eee;
 }

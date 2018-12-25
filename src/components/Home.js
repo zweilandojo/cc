@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 
 const POSTS_PER_PAGE = 10
 
-const Library = ({ data: { loading, error, posts, postsConnection, networkStatus }, loadMorePosts }) => {
+const Home = ({ data: { loading, error, posts, postsConnection, networkStatus }, loadMorePosts }) => {
   if (error) return <h1>Error fetching posts!</h1>
   if (posts && postsConnection) {
     const areMorePosts = posts.length < postsConnection.aggregate.count
@@ -13,17 +13,19 @@ const Library = ({ data: { loading, error, posts, postsConnection, networkStatus
       <section>
         <ul className='Home-ul'>
           {posts.map(post => (
-            <li className='Home-li' key={`post-${post.id}`}>
+            <li className='Home-li border border-grey-light bg-white py-4 rounded' key={`post-${post.id}`}>
               <Link to={`/post/${post.id}`} className='Home-link'>
-                <div className='Home-placeholder'>
+                <div className='Home-placeholder border-b border-grey-light'>
                   <img
                     alt={post.title}
                     className='Home-img'
-                    src={`https://media.graphcms.com/resize=w:100,h:100,fit:crop/${post.coverImage.handle}`}
+                    src={`https://media.graphcms.com/resize=w:600/${post.coverImage.handle}`}
                   />
                 </div>
-                <h3>{post.title}</h3>
-                <p>{post.tags}</p>
+                <div className="px-6 pt-4">
+                  <h3 className="text-lg">{post.title}</h3>
+                  <p className="text-xs font-normal">{post.tags}</p>
+                </div>
               </Link>
             </li>
           ))}
@@ -90,4 +92,4 @@ export default graphql(posts, {
       })
     }
   })
-})(Library)
+})(Home)
