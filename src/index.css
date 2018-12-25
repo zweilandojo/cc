@@ -14,7 +14,7 @@ main {
   padding: 0 24px;
 }
 a {
-  color: #003569;
+  color: #FA7268;
   text-decoration: none;
 }
 img {
@@ -31,6 +31,7 @@ article {
 
 /* Colors */
 .text-blue {color: #003569;}
+.text-coral {color: #FA7268;}
 
 /* Header styles */
 .app-logo:active {

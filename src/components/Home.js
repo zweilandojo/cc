@@ -36,7 +36,7 @@ const Home = ({ data: { loading, error, posts, postsConnection, networkStatus },
                   />
                   <ul className="list-reset mt-4 text-sm font-normal">
                     {post.tags.map((tag) =>
-                      <li className="inline-block mr-2 text-blue">#{tag}</li>
+                      <li className="inline-block mr-2 text-coral">#{tag}</li>
                     )}
                   </ul>
                 </div>
