@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 
 const POSTS_PER_PAGE = 10
 
-const Home = ({ data: { loading, error, posts, postsConnection, networkStatus }, loadMorePosts }) => {
+const Library = ({ data: { loading, error, posts, postsConnection, networkStatus }, loadMorePosts }) => {
   if (error) return <h1>Error fetching posts!</h1>
   if (posts && postsConnection) {
     const areMorePosts = posts.length < postsConnection.aggregate.count
@@ -43,7 +43,7 @@ const Home = ({ data: { loading, error, posts, postsConnection, networkStatus },
 
 export const posts = gql`
   query posts($first: Int!, $skip: Int!) {
-    posts(orderBy: dateAndTime_DESC, first: $first, skip: $skip) {
+    posts(orderBy: createdAt_DESC, first: $first, skip: $skip) {
       id
       slug
       title
@@ -90,4 +90,4 @@ export default graphql(posts, {
       })
     }
   })
-})(Home)
+})(Library)
