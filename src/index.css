@@ -47,7 +47,6 @@ article {
   background-color: white;
   max-width: 614px;
   overflow: hidden;
-  display: flex;
 }
 .Home-img {
   -webkit-user-select: none;
