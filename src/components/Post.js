@@ -27,6 +27,16 @@ const Post = ({ data: { loading, error, post } }) => {
             source={post.content}
             escapeHtml={false}
           />
+          <div className="gallery">
+            <h2 className="gallery_title">{post.gallery.title}</h2>
+            <ul className="gallery_photos flex m-0 list-reset">
+              {post.gallery.galleryItems.map((gi) =>
+                <li className="flex-1">
+                  <img src={gi.image.url} alt="" />
+                </li>
+              )}
+            </ul>
+          </div>
           <ul className="list-reset mt-4 text-sm font-normal">
             {post.tags.map((tag) =>
               <li className="inline-block mr-2 text-coral">#{tag}</li>
@@ -49,6 +59,15 @@ export const singlePost = gql`
         handle
       }
       content
+      gallery {
+      	title
+        galleryItems(orderBy: sort_ASC) {
+          sort
+          image {
+            url
+          }
+        }
+      }
       dateAndTime
       tags
     }
