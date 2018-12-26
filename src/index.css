@@ -23,11 +23,6 @@ article {
   margin: 0 auto;
 }
 
-.Home-li a {
-  font-weight: bold;
-  color: #000;
-}
-
 /* Colors */
 .text-blue {color: #003569;}
 .text-coral {color: #FA7268;}
@@ -52,6 +47,13 @@ article {
   align-items: center;
   margin-bottom: 16px;
   overflow: hidden;
+}
+.Home-li a {
+  font-weight: bold;
+  color: #000;
+}
+.Home-li p {
+  margin-bottom: .5rem;
 }
 .Home-link {
   color: #000;

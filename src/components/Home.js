@@ -65,7 +65,11 @@ export const posts = gql`
       content
       dateAndTime
       coverImage {
+        fileName
         handle
+        url
+        mimeType
+        size
       }
       tags
     },
