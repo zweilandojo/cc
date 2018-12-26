@@ -10,8 +10,8 @@ const Post = ({ data: { loading, error, post } }) => {
   if (error) return <h1>Error fetching the post!</h1>
   if (!loading) {
     return (
-      <article className="border border-grey-light rounded bg-white">
-        <h1 className="py-4 px-6 text-base">
+      <article className="border-t border-b sm:border border-grey-light bg-white py-4 sm:rounded">
+        <h1 className="text-base px-6 py-4 pt-0 border-b border-grey-light">
           {post.title}
         </h1>
 
@@ -27,7 +27,11 @@ const Post = ({ data: { loading, error, post } }) => {
             source={post.content}
             escapeHtml={false}
           />
-          <p className="tags my-4">{post.tags}</p>
+          <ul className="list-reset mt-4 text-sm font-normal">
+            {post.tags.map((tag) =>
+              <li className="inline-block mr-2 text-coral">#{tag}</li>
+            )}
+          </ul>
         </div>
       </article>
     )
