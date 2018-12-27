@@ -72,6 +72,9 @@ export const singlePost = gql`
       }
       dateAndTime
       tags
+      tagses {
+        title
+      }
     }
   }
 `

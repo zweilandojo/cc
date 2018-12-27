@@ -8,6 +8,7 @@ import Markdown from 'react-markdown'
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
 
 const POSTS_PER_PAGE = 10
+const POST_TAG = this.props.params
 
 const Tag = ({ data: { loading, error, posts, postsConnection, networkStatus }, loadMorePosts }) => {
   if (error) return <h1>Error fetching posts!</h1>
@@ -34,15 +35,7 @@ const Tag = ({ data: { loading, error, posts, postsConnection, networkStatus }, 
                     escapeHtml={false}
                   />
                   <p className="uppercase text-grey-dark text-xs">{post.createdAt}</p>
-                  <ul className="list-reset mt-4 text-sm font-normal">
-                    {post.tags.map((tag) =>
-                      <li className="inline-block mr-2 text-coral">
-                        <Link to={`/explore/tags/${tag}`} className="">
-                        #{tag}
-                        </Link>
-                      </li>
-                    )}
-                  </ul>
+
                 </div>
               </div>
             </li>
@@ -62,8 +55,12 @@ const Tag = ({ data: { loading, error, posts, postsConnection, networkStatus }, 
 }
 
 export const posts = gql`
-  query posts($title: String!, $first: Int!, $skip: Int!) {
-    posts(title: $title, orderBy: createdAt_DESC, first: $first, skip: $skip) {
+  query posts($first: Int!, $skip: Int!) {
+    posts(orderBy: createdAt_DESC, first: $first, skip: $skip, where: {
+      tags_some: {
+        name_contains: "${POST_TAG}"
+      }
+    }) {
       id
       slug
       title
@@ -77,16 +74,6 @@ export const posts = gql`
         mimeType
         size
       }
-      tags
-      gallery {
-      	title
-        galleryItems(orderBy: sort_ASC) {
-          sort
-          image {
-            url
-          }
-        }
-      }
     },
     postsConnection {
       aggregate {
@@ -98,8 +85,7 @@ export const posts = gql`
 
 export const postsQueryVars = {
   skip: 0,
-  first: POSTS_PER_PAGE,
-  title: ''
+  first: POSTS_PER_PAGE
 }
 
 export default graphql(posts, {

@@ -37,8 +37,8 @@ const Home = ({ data: { loading, error, posts, postsConnection, networkStatus },
                   <ul className="list-reset mt-4 text-sm font-normal">
                     {post.tags.map((tag) =>
                       <li className="inline-block mr-2 text-coral">
-                        <Link to={`/explore/tags/${tag}`} className="">
-                        #{tag}
+                        <Link to={`/explore/tags/${tag.name}`} className="">
+                        #{tag.name}
                         </Link>
                       </li>
                     )}
@@ -77,7 +77,10 @@ export const posts = gql`
         mimeType
         size
       }
-      tags
+      tags {
+        id
+        name
+      }
       gallery {
       	title
         galleryItems(orderBy: sort_ASC) {
