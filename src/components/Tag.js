@@ -9,7 +9,7 @@ import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
 
 const POSTS_PER_PAGE = 10
 
-const Home = ({ data: { loading, error, posts, postsConnection, networkStatus }, loadMorePosts }) => {
+const Tag = ({ data: { loading, error, posts, postsConnection, networkStatus }, loadMorePosts }) => {
   if (error) return <h1>Error fetching posts!</h1>
   if (posts && postsConnection) {
     const areMorePosts = posts.length < postsConnection.aggregate.count
@@ -62,8 +62,8 @@ const Home = ({ data: { loading, error, posts, postsConnection, networkStatus },
 }
 
 export const posts = gql`
-  query posts($first: Int!, $skip: Int!) {
-    posts(orderBy: createdAt_DESC, first: $first, skip: $skip) {
+  query posts($title: String!, $first: Int!, $skip: Int!) {
+    posts(title: $title, orderBy: createdAt_DESC, first: $first, skip: $skip) {
       id
       slug
       title
@@ -98,7 +98,8 @@ export const posts = gql`
 
 export const postsQueryVars = {
   skip: 0,
-  first: POSTS_PER_PAGE
+  first: POSTS_PER_PAGE,
+  title: ''
 }
 
 export default graphql(posts, {
@@ -125,4 +126,4 @@ export default graphql(posts, {
       })
     }
   })
-})(Home)
+})(Tag)
