@@ -7,7 +7,7 @@ import ojoLogo from '../assets/images/logo-ojo.png'
 export default () => (
   <header className='Header-header fixed pin-t w-full bg-white py-6'>
     <div className="mx-auto max-w-3xl flex">
-      <h1 className='flex-1 text-lg leading-loose'>
+      <h1 className='flex-1 text-lg font-medium leading-loose'>
         <NavLink exact to='/' className="app-logo text-black">
           <img src={ojoLogo} alt="OJO Logo" className="w-8 h-8 float-left mr-4" />
           <span>Meet Our Customers</span>

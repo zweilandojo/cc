@@ -7,109 +7,79 @@ import Markdown from 'react-markdown'
 // Assets
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
 
-const POSTS_PER_PAGE = 10
-//const POST_TAG = this.props.params
 
-const Category = ({ data: { loading, error, posts, postsConnection, networkStatus }, loadMorePosts }) => {
-  if (error) return <h1>Error fetching posts!</h1>
-  if (posts && postsConnection) {
-    const areMorePosts = posts.length < postsConnection.aggregate.count
+
+const Category = ({ data: { loading, error, persons, networkStatus } }) => {
+  if (error) return <h1>Error fetching people!</h1>
+  if (persons) {
     return (
       <section>
         <ul className='Home-ul'>
-          {posts.map(post => (
-            <li className='Home-li border-t border-b sm:border border-grey-light bg-white py-4 sm:rounded' key={`post-${post.id}`}>
-              <div className='w-full'>
-                <h3 className="text-base px-6 py-4 pt-0 border-b border-grey-light">
-                  {post.title}
-                </h3>
-                <Link to={`/p/${post.id}`} className='block Home-placeholder border-b border-grey-light'>
-                  <img
-                    alt={post.title}
-                    src={`https://media.graphcms.com/resize=w:614,fit:crop/${post.coverImage.handle}`}
-                  />
-                </Link>
-                <div className="px-6 pt-4 text-sm">
-                  <Markdown
-                    source={post.content}
-                    escapeHtml={false}
-                  />
-                  <p className="uppercase text-grey-dark text-xs">{post.createdAt}</p>
-
+          {persons.map(person => (
+            <li className='Home-li w-1/3 bg-white py-4' key={`post-${person.id}`}>
+              <div className="border-2 border-grey-lighter rounded-lg mx-4">
+                <div className='w-full px-6 mb-4'>
+                  <h3 className="text-lg my-2 pt-0">
+                    {person.firstName} {person.lastName}
+                  </h3>
+                  <p className="text-grey-darker uppercase text-xs truncate">
+                    {person.userType} <span className="text-grey mx-2">|</span> {person.age} <span className="text-grey mx-2">|</span> {person.city} <span className="text-grey mx-2">|</span> {person.jobTitle}
+                  </p>
+                </div>
+                <div className="w-full block px-6">
+                  <Link to={`/p/${person.id}`} className='block'>
+                    <div className="rounded overflow-hidden h-64">
+                      <img
+                        alt={person.firstName}
+                        src={`https://media.graphcms.com/resize=w:614,fit:crop/${person.photo.handle}`}
+                      />
+                    </div>
+                  </Link>
+                </div>
+                <div className="p-6">
                 </div>
               </div>
             </li>
           ))}
         </ul>
-        <div className='Home-showMoreWrapper'>
-          {areMorePosts
-            ? <button className='Home-button' disabled={loading} onClick={() => loadMorePosts()}>
-              {loading ? 'Loading...' : 'Show More Posts'}
-            </button>
-            : ''}
-        </div>
       </section>
     )
   }
-  return <div className="w-full text-center my-4"><img src={LoadingGif} className="w-16 h-16 mx-auto" alt="Loading post..." /></div>
+  return <div className="w-full text-center my-4"><img src={LoadingGif} className="w-16 h-16 mx-auto" alt="Loading person..." /></div>
 }
 
-export const posts = gql`
-  query posts($first: Int!, $skip: Int!) {
-    posts(orderBy: createdAt_DESC, first: $first, skip: $skip, where: {
-      tags_some: {
-        name_contains: "buyers"
-      }
-    }) {
+export const persons = gql`
+  query persons {
+    persons(where: { userType: Buyer }) {
       id
-      slug
-      title
-      content
+      firstName
+      lastName
+      age
+      city
+      jobTitle
+      techProficiency
       createdAt
-      dateAndTime
-      coverImage {
-        fileName
+      photo {
         handle
-        url
-        mimeType
-        size
       }
-    },
-    postsConnection {
-      aggregate {
-        count
+      brokerages {
+        name
+        market
+        officeWebsite
       }
     }
   }
 `
 
 export const postsQueryVars = {
-  skip: 0,
-  first: POSTS_PER_PAGE
 }
 
-export default graphql(posts, {
+export default graphql(persons, {
   options: {
     variables: postsQueryVars,
     notifyOnNetworkStatusChange: true
   },
   props: ({ data }) => ({
-    data,
-    loadMorePosts: () => {
-      return data.fetchMore({
-        variables: {
-          skip: data.posts.length
-        },
-        updateQuery: (previousResult, { fetchMoreResult }) => {
-          if (!fetchMoreResult) {
-            return previousResult
-          }
-          return Object.assign({}, previousResult, {
-            // Append the new posts results to the old one
-            posts: [...previousResult.posts, ...fetchMoreResult.posts]
-          })
-        }
-      })
-    }
+    data
   })
 })(Category)

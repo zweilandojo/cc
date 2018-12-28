@@ -47,15 +47,21 @@ article {
 .text-blue {color: #3366FF;}
 .text-dark-blue {color: #0D47A1;}
 
+/* Font Weight */
+.font-light { font-weight: 200; }
+.font-regular { font-weight: 400; }
+.font-medium { font-weight: 600; }
+.font-bold { font-weight: 800; }
+
 /* Header styles */
 .app-logo:active {
   opacity: .5;
 }
 .Header-header {}
 .Header-h1 {}
-.Header-nav {}
-.Header-navLink {}
-.Header-isActive {}
+.Header-nav { font-weight: 600; }
+.Header-navLink { color: #212121; }
+.Header-isActive { }
 
 /* Home */
 .Home-ul {}
