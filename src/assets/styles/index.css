@@ -1,19 +1,38 @@
+/* Import Sofia fonts */
+@font-face {
+  font-family: "Sofia Pro Soft Light";
+  src: url('../fonts/Sofia-Pro-Soft-Light.otf');
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Sofia Pro Soft Regular";
+  src: url('../fonts/Sofia-Pro-Soft-Regular.otf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Sofia Pro Medium";
+  src: url('../fonts/Sofia-Pro-Soft-Medium.otf');
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Sofia Pro Bold";
+  src: url('../fonts/Sofia-Pro-Soft-Bold.otf');
+  font-weight: 800;
+}
+
 /* Global styles */
 body {
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-family: "Sofia Pro Soft Regular", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   font-size: 1rem;
   line-height: 1.5;
-  background: #fafafa;
+  background: #fff;
 }
-main {
-  max-width: 614px;
-  margin: 2rem auto;
-}
+main {}
 a {
-  color: #FA7268;
+  color: #00B0FF;
   text-decoration: none;
 }
 img {
@@ -24,8 +43,9 @@ article {
 }
 
 /* Colors */
-.text-blue {color: #003569;}
-.text-coral {color: #FA7268;}
+.text-blue-light {color: #00B0FF;}
+.text-blue {color: #3366FF;}
+.text-dark-blue {color: #0D47A1;}
 
 /* Header styles */
 .app-logo:active {
@@ -38,20 +58,9 @@ article {
 .Header-isActive {}
 
 /* Home */
-.Home-ul {
-  padding: 0;
-  margin: 0;
-}
-.Home-li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-  overflow: hidden;
-}
-.Home-li a {
-  font-weight: bold;
-  color: #000;
-}
+.Home-ul {}
+.Home-li { display: block; }
+.Home-li a {}
 .Home-li p {
   margin-bottom: .5rem;
 }

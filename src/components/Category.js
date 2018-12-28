@@ -8,9 +8,9 @@ import Markdown from 'react-markdown'
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
 
 const POSTS_PER_PAGE = 10
-const POST_TAG = this.props.params
+//const POST_TAG = this.props.params
 
-const Tag = ({ data: { loading, error, posts, postsConnection, networkStatus }, loadMorePosts }) => {
+const Category = ({ data: { loading, error, posts, postsConnection, networkStatus }, loadMorePosts }) => {
   if (error) return <h1>Error fetching posts!</h1>
   if (posts && postsConnection) {
     const areMorePosts = posts.length < postsConnection.aggregate.count
@@ -58,7 +58,7 @@ export const posts = gql`
   query posts($first: Int!, $skip: Int!) {
     posts(orderBy: createdAt_DESC, first: $first, skip: $skip, where: {
       tags_some: {
-        name_contains: "${POST_TAG}"
+        name_contains: "buyers"
       }
     }) {
       id
@@ -112,4 +112,4 @@ export default graphql(posts, {
       })
     }
   })
-})(Tag)
+})(Category)
