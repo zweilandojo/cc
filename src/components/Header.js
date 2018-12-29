@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // Assets
 import ojoLogo from '../assets/images/logo-ojo.png'
@@ -8,33 +8,37 @@ export default () => (
   <header className='Header-header fixed pin-t w-full bg-white py-6'>
     <div className="mx-auto max-w-3xl flex">
       <h1 className='flex-1 text-lg font-medium leading-loose'>
-        <NavLink exact to='/' className="app-logo text-black">
+        <Link exact to='/' className="app-logo text-black">
           <img src={ojoLogo} alt="OJO Logo" className="w-8 h-8 float-left mr-4" />
-          <span>Meet Our Customers</span>
-        </NavLink>
+          <span>Meet Your Users</span>
+        </Link>
       </h1>
       <nav className='Header-nav pt-2 leading-tight flex-1 text-right'>
-        <NavLink
+        <Link
           to='/'
-          className='Header-navLink px-2'
-          activeClassName='Header-isActive'
+          className='Header-navLink px-4'
         >
           Home
-        </NavLink>
-        <NavLink
+        </Link>
+        <Link
           to='/buyers'
-          className='Header-navLink px-2'
-          activeClassName='Header-isActive'
+          className='Header-navLink px-4'
+          params={{ testvalue: "hello" }}
         >
           Buyers
-        </NavLink>
-        <NavLink
+        </Link>
+        <Link
           to='/agents'
-          className='Header-navLink px-2'
-          activeClassName='Header-isActive'
+          className='Header-navLink px-4'
         >
           Agents
-        </NavLink>
+        </Link>
+        <Link
+          to='/aits'
+          className='Header-navLink px-4'
+        >
+          AITs
+        </Link>
       </nav>
     </div>
   </header>

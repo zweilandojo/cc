@@ -12,12 +12,14 @@ const Person = ({ data: { loading, error, person } }) => {
   if (!loading) {
     return (
       <div>
-        <article className="border-t border-b sm:border border-grey-light bg-white py-4 sm:rounded">
-          <Link to="/">Back to Home</Link>
+        <article className="bg-white py-4 sm:rounded">
+          {/*<div className="block mb-8">
+            <Link to="/">&larr; back to all users</Link>
+          </div>*/}
           <div className='w-full px-6 mb-4'>
-            <h3 className="text-lg my-2 pt-0">
+            <h1 className="text-4xl my-2 pt-0">
               {person.firstName} {person.lastName}
-            </h3>
+            </h1>
             <p className="text-grey-darker uppercase text-xs truncate">
               {person.userType} <span className="text-grey mx-2">|</span> {person.age} <span className="text-grey mx-2">|</span> {person.city} <span className="text-grey mx-2">|</span> {person.jobTitle}
             </p>

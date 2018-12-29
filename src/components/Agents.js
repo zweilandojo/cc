@@ -7,16 +7,20 @@ import Markdown from 'react-markdown'
 // Assets
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
 
+const PAGE_USER_TYPE = "Agent";
 
-
-const Category = ({ data: { loading, error, persons, networkStatus } }) => {
+const UserType = ({ data: {loading, error, persons, networkStatus } }) => {
   if (error) return <h1>Error fetching people!</h1>
   if (persons) {
     return (
       <section>
-        <ul className='Home-ul'>
+        <div className="py-4 px-6">
+          <h1 className="text-2xl text-black">Meet our Agents</h1>
+          <p className="text-lg text-grey-dark">Remembering exact details about their clients, knowing what their clients needs are before they do.</p>
+        </div>
+        <ul className='flex flex-wrap list-reset'>
           {persons.map(person => (
-            <li className='Home-li w-1/3 bg-white py-4' key={`post-${person.id}`}>
+            <li className='w-1/3 bg-white py-4' key={`post-${person.id}`}>
               <div className="border-2 border-grey-lighter rounded-lg mx-4">
                 <div className='w-full px-6 mb-4'>
                   <h3 className="text-lg my-2 pt-0">
@@ -50,7 +54,7 @@ const Category = ({ data: { loading, error, persons, networkStatus } }) => {
 
 export const persons = gql`
   query persons {
-    persons(where: { userType: Buyer }) {
+    persons(where: { userType: ${PAGE_USER_TYPE} }) {
       id
       firstName
       lastName
@@ -67,6 +71,7 @@ export const persons = gql`
         market
         officeWebsite
       }
+      userType
     }
   }
 `
@@ -82,4 +87,4 @@ export default graphql(persons, {
   props: ({ data }) => ({
     data
   })
-})(Category)
+})(UserType)

@@ -7,33 +7,18 @@ import Markdown from 'react-markdown'
 // Assets
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
 
-const POSTS_PER_PAGE = 10
+const PAGE_USER_TYPE = "AIT";
 
-const Home = ({ data: { loading, error, persons, networkStatus }}) => {
+const UserType = ({ data: {loading, error, persons, networkStatus } }) => {
   if (error) return <h1>Error fetching people!</h1>
   if (persons) {
     return (
       <section>
-        <div>
-          <div className="flex">
-            <Link to="/buyers" className="w-1/3 bg-white py-4 text-center">
-              <div className='border-2 border-grey-lighter rounded-lg p-8 mx-4'>
-                <h3>Buyers</h3>
-              </div>
-            </Link>
-            <Link to="/agents" className="w-1/3 bg-white py-4 text-center">
-              <div className='border-2 border-grey-lighter rounded-lg p-8 mx-4'>
-                <h3>Agents</h3>
-              </div>
-            </Link>
-            <Link to="aits" className="w-1/3 bg-white py-4 text-center">
-              <div className='border-2 border-grey-lighter rounded-lg p-8 mx-4'>
-                <h3>AITs</h3>
-              </div>
-            </Link>
-          </div>
+        <div className="py-4 px-6">
+          <h1 className="text-2xl text-black">Meet our AI Trainers</h1>
+          <p className="text-lg text-grey-dark">Remembering exact details about their clients, knowing what their clients needs are before they do.</p>
         </div>
-        <ul className='list-reset flex flex-wrap'>
+        <ul className='Home-ul'>
           {persons.map(person => (
             <li className='Home-li w-1/3 bg-white py-4' key={`post-${person.id}`}>
               <div className="border-2 border-grey-lighter rounded-lg mx-4">
@@ -64,43 +49,33 @@ const Home = ({ data: { loading, error, persons, networkStatus }}) => {
       </section>
     )
   }
-  return <div className="w-full text-center my-4"><img src={LoadingGif} className="w-16 h-16 mx-auto" alt="Loading post..." /></div>
+  return <div className="w-full text-center my-4"><img src={LoadingGif} className="w-16 h-16 mx-auto" alt="Loading person..." /></div>
 }
 
 export const persons = gql`
-  query {
-    persons {
+  query persons {
+    persons(where: { userType: ${PAGE_USER_TYPE} }) {
       id
       firstName
       lastName
       age
       city
-      state
-      country
       jobTitle
+      techProficiency
       createdAt
       photo {
         handle
       }
-      pullQuote
-      bio
-      techProficiency
-      motivators
-      needs
-      painPoints
-      challenge
-      journey
-      dateJoined
-      datePurchased
-      website
-      userType
+      brokerages {
+        name
+        market
+        officeWebsite
+      }
     }
   }
 `
 
 export const postsQueryVars = {
-  skip: 0,
-  first: POSTS_PER_PAGE
 }
 
 export default graphql(persons, {
@@ -111,4 +86,4 @@ export default graphql(persons, {
   props: ({ data }) => ({
     data
   })
-})(Home)
+})(UserType)
