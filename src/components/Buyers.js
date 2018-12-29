@@ -24,7 +24,7 @@ const UserType = ({ data: {loading, error, persons, networkStatus } }) => {
               <div className="border-2 border-grey-lighter rounded-lg mx-4">
                 <div className='w-full px-6 mb-4'>
                   <h3 className="text-lg my-2 pt-0">
-                    {person.firstName} {person.lastName}
+                    {person.firstName}
                   </h3>
                   <p className="text-grey-darker uppercase text-xs truncate">
                     {person.userType} <span className="text-grey mx-2">|</span> {person.age} <span className="text-grey mx-2">|</span> {person.city} <span className="text-grey mx-2">|</span> {person.jobTitle}
