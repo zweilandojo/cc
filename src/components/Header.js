@@ -5,29 +5,29 @@ import { NavLink } from 'react-router-dom'
 import ojoLogo from '../assets/images/logo-ojo.png'
 
 export default () => (
-  <header className='Header-header z-10 fixed pin-t w-full p-6 border-b border-grey-dark'>
+  <header className='Header-header z-10 fixed pin-t w-full border-b border-grey-dark'>
     <div className="flex">
-      <h1 className='flex-1 text-lg font-medium leading-loose'>
-        <NavLink exact to='/' className="app-logo text-black">
-          <img src={ojoLogo} alt="OJO Logo" className="w-8 h-8 float-left mr-4" />
+      <h1 className='flex-1 w-1/3 text-lg font-medium leading-loose'>
+        <NavLink exact to='/' className="app-logo text-black float-left px-10 py-4 inline-block">
+          <img src={ojoLogo} alt="OJO Logo" className="w-8 h-8" />
         </NavLink>
       </h1>
-      <div className="text-center">
+      <div className="flex-1 w-1/3 text-center">
         <NavLink
           to='/'
-          className="block uppercase text-white"
+          className="Header-navLink uppercase font-bold text-sm tracking-wider text-white py-4 block leading-loose"
         >
           Meet Our Users
         </NavLink>
       </div>
-      <nav className='Header-nav pt-2 leading-tight flex-1 text-right'>
+      <div className="flex-1 w-1/3">
         <NavLink
           to='/create'
-          className='Header-navLink text-white text-3xl leading-tight'
+          className='Header-navLink Header-actionLink px-10 text-white uppercase font-bold text-sm tracking-wider'
         >
-          +
+          + CREATE
         </NavLink>
-      </nav>
+      </div>
     </div>
   </header>
 )

@@ -52,6 +52,9 @@ img {
 .font-medium { font-weight: 600; }
 .font-bold { font-weight: 800; }
 
+/* Tracking */
+.tracking-wider { letter-spacing: 0.2rem; }
+
 /* Borders */
 .border-grey-dark {
   border-color: rgba(255,255,255,.5);
@@ -66,6 +69,16 @@ img {
 .Header-h1 {}
 .Header-nav { font-weight: 600; }
 .Header-navLink { color: #fff; }
+.Header-actionLink {
+  float: right;
+  background: rgba(255,255,255,.1);
+  height: 64px;
+  line-height: 64px;
+  transition: .15s all linear;
+}
+.Header-actionLink:hover {
+  background-color: rgba(255,255,255,.25);
+}
 .Header-isActive { }
 
 /* Home */
