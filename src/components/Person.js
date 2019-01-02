@@ -24,7 +24,7 @@ const Person = ({ data: { loading, error, person } }) => {
         </div>
         <article className="max-w-xl mx-auto">
           <header className="text-center">
-            <div className="mx-auto w-48 h-48 bg-green rounded-full overflow-hidden">
+            <div className="mx-auto w-48 h-48 bg-black rounded-full overflow-hidden">
               <img
                 alt={person.firstName}
                 src={`https://media.graphcms.com/resize=w:240,fit:crop/${person.photo.handle}`}
