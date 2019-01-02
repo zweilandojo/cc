@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import ojoLogo from '../assets/images/logo-ojo.png'
 
 export default () => (
-  <header className='Header-header fixed pin-t w-full p-6 border-b border-grey-dark'>
+  <header className='Header-header z-10 fixed pin-t w-full p-6 border-b border-grey-dark'>
     <div className="flex">
       <h1 className='flex-1 text-lg font-medium leading-loose'>
         <NavLink exact to='/' className="app-logo text-black">

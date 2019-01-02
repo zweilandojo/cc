@@ -10,6 +10,6 @@ export default () => (
     >
       About
     </NavLink>
-    <div className="uppercase float-right text-right text-grey-dark">© 2019 OJO Labs</div>
+    <div className="uppercase float-right text-right text-grey-dark">OJO Labs 2019</div>
   </footer>
 )

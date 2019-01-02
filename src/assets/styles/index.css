@@ -75,9 +75,38 @@ img {
 .Home-li p {
   margin-bottom: .5rem;
 }
-.Home-link {
+.home-link {
   color: #000;
+  background: #212121;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  width: 33.3333%;
+  z-index: 0;
 }
+.home-link::after {
+  content: "";
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 0;
+  background-size: cover;
+  transition: .15s all linear;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+.home-link:hover::after {
+  opacity: .25;
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+}
+.home-link_agent::after { background-image: url('../images/customer-types/agent.png'); }
+.home-link_buyer::after { background-image: url('../images/customer-types/buyer.png'); }
+.home-link_ait::after { background-image: url('../images/customer-types/ait.png'); }
+
 .Home-placeholder {
   background-color: white;
   max-width: 614px;

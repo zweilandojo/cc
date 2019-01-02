@@ -5,11 +5,13 @@ import gql from 'graphql-tag'
 
 // Assets
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
+import agentBG from '../assets/images/customer-types/agent.png'
+
 
 // Components
 import Footer from '../components/Footer'
 
-const POSTS_PER_PAGE = 10
+// const POSTS_PER_PAGE = 10
 
 const Home = ({ data: { loading, error, persons }}) => {
   if (error) return <h1>Error fetching people!</h1>
@@ -18,19 +20,19 @@ const Home = ({ data: { loading, error, persons }}) => {
       <main>
         <section className="">
           <div className="flex">
-            <Link to="/agents" className="w-1/3 text-center h-screen bg-red">
-              <div className=''>
-                <h3 className="text-white">Agents</h3>
+            <Link to="/agents" className="home-link home-link_agent flex items-center w-1/3 h-screen">
+              <div className='text-center w-full h-10'>
+                <h3 className="text-white text-5xl">Agents</h3>
               </div>
             </Link>
-            <Link to="/buyers" className="w-1/3 text-center  h-screen bg-grey-dark">
-              <div className=''>
-                <h3 className="text-white">Buyers</h3>
+            <Link to="/buyers" className="home-link home-link_buyer flex items-center w-1/3 h-screen">
+              <div className='text-center w-full h-10'>
+                <h3 className="text-white text-5xl">Buyers</h3>
               </div>
             </Link>
-            <Link to="/aits" className="w-1/3 text-center h-screen bg-green">
-              <div className=''>
-                <h3 className="text-white">AITs</h3>
+            <Link to="/aits" className="home-link home-link_ait w-1/3 flex items-center h-screen">
+              <div className='text-center w-full h-10'>
+                <h3 className="text-white text-5xl">AITs</h3>
               </div>
             </Link>
           </div>
@@ -105,7 +107,7 @@ export const persons = gql`
 
 export const postsQueryVars = {
   skip: 0,
-  first: POSTS_PER_PAGE
+  // first: POSTS_PER_PAGE
 }
 
 export default graphql(persons, {

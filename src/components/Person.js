@@ -13,7 +13,13 @@ const Person = ({ data: { loading, error, person } }) => {
     return (
       <div className="mt-32">
         <div className="ml-6">
-          <Link to="/buyers" className="text-grey text-sm tracking-wide uppercase">&larr; Back to Buyers</Link>
+        {(() => {
+          switch (person.customerType) {
+            case "Buyer":   return <Link to="/buyers" className="text-grey text-sm tracking-wide uppercase">&larr; Back to Buyers</Link>;
+            case "Agent":   return <Link to="/agents" className="text-grey text-sm tracking-wide uppercase">&larr; Back to Agents</Link>;
+            case "AIT":   return <Link to="/aits" className="text-grey text-sm tracking-wide uppercase">&larr; Back to AITs</Link>;
+          }
+        })()}
         </div>
         <article className="max-w-xl mx-auto">
           <header className="text-center">
