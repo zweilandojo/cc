@@ -17,7 +17,7 @@ export default () => (
           to='/'
           className="Header-navLink uppercase font-bold text-sm tracking-wider text-white py-4 block leading-loose"
         >
-          Meet Our Users
+          Meet Our Customers
         </NavLink>
       </div>
       <div className="flex-1 w-1/3">

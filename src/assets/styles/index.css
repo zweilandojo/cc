@@ -177,3 +177,14 @@ article {
   max-width: 614px;
   background-color: #eee;
 }
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+:: Print Styles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+@media print {
+  body {
+    background: red;
+  }
+}
