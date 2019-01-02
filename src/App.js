@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Header from './components/Header'
-import Footer from './components/Footer'
 import Home from './components/Home'
 import Person from './components/Person'
 import Agents from './components/Agents'
@@ -26,7 +25,6 @@ const App = () => (
         <Route path='/create' component={Create} />
         <Route path='/about' component={About} />
       </main>
-      <Footer />
     </div>
   </Router>
 )

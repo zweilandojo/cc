@@ -1,8 +1,8 @@
 import React from 'react'
-import {  } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-//import Markdown from 'react-markdown'
+import Markdown from 'react-markdown'
 
 // Assets
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
@@ -11,27 +11,38 @@ const Person = ({ data: { loading, error, person } }) => {
   if (error) return <h1>Error fetching this person!</h1>
   if (!loading) {
     return (
-      <div classname="mx-auto max-w-md text-white">
-        <article className="py-4 sm:rounded pt-32">
-          {/*<div className="block mb-8">
-            <Link to="/">&larr; back to all users</Link>
-          </div>*/}
-          <div className='w-full px-6 mb-4'>
-            <h1 className="text-5xl my-2 pt-0 text-white">
-              {person.firstName}
-            </h1>
-            <p className="text-grey-darker uppercase text-xs truncate">
-              {person.customerType} <span className="text-grey mx-2">|</span> {person.age} <span className="text-grey mx-2">|</span> {person.city} <span className="text-grey mx-2">|</span> {person.jobTitle}
-            </p>
-          </div>
-          <div className="w-full block px-6">
-            <div className="rounded overflow-hidden">
+      <div className="mt-32">
+        <div className="ml-6">
+          <Link to="/buyers" className="text-grey text-sm tracking-wide uppercase">&larr; Back to Buyers</Link>
+        </div>
+        <article className="max-w-xl mx-auto">
+          <header className="text-center">
+            <div className="mx-auto w-48 h-48 bg-green rounded-full overflow-hidden">
               <img
                 alt={person.firstName}
                 src={`https://media.graphcms.com/resize=w:240,fit:crop/${person.photo.handle}`}
               />
             </div>
-          </div>
+            <div className='w-full px-6 mb-4'>
+              <h1 className="text-5xl pt-2 text-white">
+                {person.firstName}
+              </h1>
+              <p className="text-grey text-sm tracking-wide uppercase truncate">
+                {person.customerType} <span className="text-grey mx-2">|</span> {person.age} <span className="text-grey mx-2">|</span> {person.city} <span className="text-grey mx-2">|</span> {person.jobTitle}
+              </p>
+            </div>
+            <div className="mb-2 text-white">
+              <p className="text-xl">
+                <em>
+                  &quot;
+                  {person.pullQuote}
+                  &quot;
+                </em>
+              </p>
+            </div>
+          </header>
+          <section className="text-white">
+
           <div className="p-6">
             {person.brokerages !== null &&
               person.brokerages.map((brokerage) =>
@@ -45,52 +56,102 @@ const Person = ({ data: { loading, error, person } }) => {
                 </div>
               )
             }
-            <div className="mb-2">
-              <h6 className="text-sm uppercase">Bio</h6>
-              <p className="">{person.bio}</p>
-            </div>
-            <div className="mb-2">
-              <h6 className="text-sm uppercase">Pull Quote</h6>
-              <p className=""><em>{person.pullQuote}</em></p>
-            </div>
-            <div className="mb-2">
-              <h6 className="text-sm uppercase">Specialties</h6>
-              <p className="">{person.specialties}</p>
-            </div>
-            <div className="mb-2">
-              <h6 className="text-sm uppercase">Motivators</h6>
-              <p className="">{person.motivators}</p>
-            </div>
-            <div className="mb-2">
-              <h6 className="text-sm uppercase">Needs</h6>
-              <p className="">{person.needs}</p>
-            </div>
-            <div className="mb-2">
-              <h6 className="text-sm uppercase">Pain Points</h6>
-              <p className="">{person.painPoints}</p>
-            </div>
-            <div className="mb-2">
-              <h6 className="text-sm uppercase">Challenge</h6>
-              <p className="">{person.challenge}</p>
-            </div>
-            <div className="mb-2">
-              <h6 className="text-sm uppercase">Location</h6>
-              <p className="">{person.city}, {person.state}, {person.country}</p>
-            </div>
-            <div className="mb-2">
-              <h6 className="text-sm uppercase">Date Joined</h6>
-              <p className="">{person.dateJoined}</p>
-            </div>
-            <div className="mb-2">
-              <h6 className="text-sm uppercase">Date Purchased</h6>
-              <p className="">{person.datePurchased}</p>
+            <div className="flex">
+              <div className="w-3/4 pr-8">
+                <div className="mb-4">
+                  <h2 className="">Bio</h2>
+                  <Markdown
+                    source={person.bio}
+                    escapeHtml={false}
+                  />
+                </div>
+
+                {person.customerType === "Agent" &&
+                <div className="mb-2">
+                  <h6 className="text-sm uppercase">Specialties</h6>
+                  <p className="">{person.specialties}</p>
+                </div>
+                }
+
+                <div className="border-t border-b border-grey-darkest py-6 my-6">
+                  <div className="mb-4">
+                    <h3 className="">Motivators</h3>
+                    <Markdown
+                      source={person.motivators}
+                      escapeHtml={false}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <h3 className="">Needs</h3>
+                    <Markdown
+                      source={person.needs}
+                      escapeHtml={false}
+                    />
+                  </div>
+                  <div className="">
+                    <h3 className="">Pain Points</h3>
+                    <Markdown
+                      source={person.painPoints}
+                      escapeHtml={false}
+                    />
+                  </div>
+                </div>
+
+              </div>
+
+              <section id="FastFacts" className="w-1/4">
+                {/*<header>
+                  <h2>Fast Facts</h2>
+                </header>*/}
+
+                <div className="mb-4">
+                  <h6 className="text-xs tracking-wide uppercase">Agent Name</h6>
+                  <p className="text-base text-grey">Agent name here...</p>
+                </div>
+
+                <div className="mb-4">
+                  <h6 className="text-xs tracking-wide uppercase">Location</h6>
+                  <p className="text-base text-grey">{person.city}, {person.state}, {person.country}</p>
+                </div>
+
+                <div className="mb-4">
+                  <h6 className="text-xs tracking-wide uppercase">Moved to</h6>
+                  <p className="text-base text-grey">{person.movedTo}</p>
+                </div>
+
+                <div className="mb-2">
+                  <h6 className="text-xs tracking-wide uppercase">Date Joined</h6>
+                  <p className="text-base text-grey">{person.dateJoined}</p>
+                </div>
+
+                <div className="mb-2">
+                  <h6 className="text-xs tracking-wide uppercase">Date Purchased</h6>
+                  <p className="text-base text-grey">{person.datePurchased}</p>
+                </div>
+              </section>
             </div>
 
+            {/*
             <div className="mb-2">
-              <h6 className="text-sm uppercase">Website</h6>
-              <a href={person.website} className="block">{person.website}</a>
+              <h3 className="text-sm uppercase">Challenge</h3>
+              <p className="">{person.challenge}</p>
             </div>
+            */}
+
+            {person.customerType === "Agent" &&
+              <div className="mb-2">
+                <h3 className="text-sm uppercase">Website</h3>
+                <a href={person.website} className="block">{person.website}</a>
+              </div>
+            }
+
           </div>
+          </section>
+          <section id="Events" className="Events text-white">
+            <h2 className="">Events</h2>
+            <div>
+            </div>
+          </section>
         </article>
       </div>
     )
@@ -123,6 +184,7 @@ export const singlePerson = gql`
       journey
       dateJoined
       datePurchased
+      movedTo
       website
       customerType
       specialties

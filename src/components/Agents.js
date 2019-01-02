@@ -11,7 +11,7 @@ const Agents = ({ data: {loading, error, persons }}) => {
   if (error) return <h1>Error fetching people!</h1>
   if (persons) {
     return (
-      <section className="pt-24">
+      <section className="pt-32">
         <header className="px-6 max-w-md mx-auto text-center text-white mb-6">
           <h1 className="text-5xl">Agents</h1>
           <p className="text-lg text-grey-dark">Remembering exact details about their clients, knowing what their clients needs are before they do.</p>

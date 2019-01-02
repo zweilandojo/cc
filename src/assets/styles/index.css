@@ -43,6 +43,8 @@ img {
 .text-blue-light {color: #00B0FF;}
 .text-blue {color: #3366FF;}
 .text-dark-blue {color: #0D47A1;}
+.text-grey-dark {color: #757575;}
+.text-grey {color: #bdbdbd;}
 
 /* Font Weight */
 .font-light { font-weight: 200; }
