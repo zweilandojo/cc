@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {  } from 'react-router-dom'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-import Markdown from 'react-markdown'
+//import Markdown from 'react-markdown'
 
 // Assets
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
@@ -11,17 +11,17 @@ const Person = ({ data: { loading, error, person } }) => {
   if (error) return <h1>Error fetching this person!</h1>
   if (!loading) {
     return (
-      <div>
-        <article className="bg-white py-4 sm:rounded">
+      <div classname="mx-auto max-w-md text-white">
+        <article className="py-4 sm:rounded pt-32">
           {/*<div className="block mb-8">
             <Link to="/">&larr; back to all users</Link>
           </div>*/}
           <div className='w-full px-6 mb-4'>
-            <h1 className="text-4xl my-2 pt-0">
+            <h1 className="text-5xl my-2 pt-0 text-white">
               {person.firstName}
             </h1>
             <p className="text-grey-darker uppercase text-xs truncate">
-              {person.userType} <span className="text-grey mx-2">|</span> {person.age} <span className="text-grey mx-2">|</span> {person.city} <span className="text-grey mx-2">|</span> {person.jobTitle}
+              {person.customerType} <span className="text-grey mx-2">|</span> {person.age} <span className="text-grey mx-2">|</span> {person.city} <span className="text-grey mx-2">|</span> {person.jobTitle}
             </p>
           </div>
           <div className="w-full block px-6">
@@ -124,7 +124,7 @@ export const singlePerson = gql`
       dateJoined
       datePurchased
       website
-      userType
+      customerType
       specialties
       brokerages {
         name

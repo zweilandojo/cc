@@ -28,18 +28,15 @@ body {
   margin: 0;
   font-size: 1rem;
   line-height: 1.5;
-  background: #fff;
+  background: #212121;
 }
-main {}
+
 a {
   color: #00B0FF;
   text-decoration: none;
 }
 img {
   display: block;
-}
-article {
-  margin: 0 auto;
 }
 
 /* Colors */
@@ -53,6 +50,12 @@ article {
 .font-medium { font-weight: 600; }
 .font-bold { font-weight: 800; }
 
+/* Borders */
+.border-grey-dark {
+  border-color: rgba(255,255,255,.5);
+}
+
+
 /* Header styles */
 .app-logo:active {
   opacity: .5;
@@ -60,7 +63,7 @@ article {
 .Header-header {}
 .Header-h1 {}
 .Header-nav { font-weight: 600; }
-.Header-navLink { color: #212121; }
+.Header-navLink { color: #fff; }
 .Header-isActive { }
 
 /* Home */
@@ -104,6 +107,13 @@ article {
 .Home-button:disabled{
   background: grey;
   cursor: not-allowed;
+}
+
+/* Content */
+main {}
+
+article {
+  margin: 0 auto;
 }
 
 /* About */

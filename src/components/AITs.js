@@ -2,25 +2,23 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import Markdown from 'react-markdown'
+//import Markdown from 'react-markdown'
 
 // Assets
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
 
-const PAGE_USER_TYPE = "AIT";
-
-const UserType = ({ data: {loading, error, persons, networkStatus } }) => {
+const AITs = ({ data: {loading, error, persons }}) => {
   if (error) return <h1>Error fetching people!</h1>
   if (persons) {
     return (
       <section>
         <div className="py-4 px-6">
-          <h1 className="text-2xl text-black">Meet our AI Trainers</h1>
+          <h1 className="text-2xl text-black">Meet our Agents</h1>
           <p className="text-lg text-grey-dark">Remembering exact details about their clients, knowing what their clients needs are before they do.</p>
         </div>
-        <ul className='Home-ul'>
+        <ul className='flex flex-wrap list-reset'>
           {persons.map(person => (
-            <li className='Home-li w-1/3 bg-white py-4' key={`post-${person.id}`}>
+            <li className='w-1/3 bg-white py-4' key={`post-${person.id}`}>
               <div className="border-2 border-grey-lighter rounded-lg mx-4">
                 <div className='w-full px-6 mb-4'>
                   <h3 className="text-lg my-2 pt-0">
@@ -53,8 +51,8 @@ const UserType = ({ data: {loading, error, persons, networkStatus } }) => {
 }
 
 export const persons = gql`
-  query persons {
-    persons(where: { userType: ${PAGE_USER_TYPE} }) {
+  query postsWithTag($customerType: String!) {
+    persons(where: { customerType: $customerType }) {
       id
       firstName
       lastName
@@ -71,19 +69,14 @@ export const persons = gql`
         market
         officeWebsite
       }
+      customerType
     }
   }
 `
-
-export const postsQueryVars = {
-}
-
 export default graphql(persons, {
-  options: {
-    variables: postsQueryVars,
-    notifyOnNetworkStatusChange: true
-  },
-  props: ({ data }) => ({
-    data
+  options: () => ({
+    variables: {
+      customerType: "AIT"
+    }
   })
-})(UserType)
+})(AITs)

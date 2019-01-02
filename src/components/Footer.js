@@ -2,10 +2,10 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 export default () => (
-  <footer className="py-8 text-sm max-w-3xl mx-auto">
+  <footer className="fixed pin-b w-full p-6 border-t border-grey-dark">
     <NavLink
       to='/about'
-      className='Header-navLink px-2 uppercase font-bold'
+      className='Header-navLink px-2 uppercase'
       activeClassName='Header-isActive'
     >
       About

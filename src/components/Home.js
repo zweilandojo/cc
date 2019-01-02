@@ -2,37 +2,35 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import Markdown from 'react-markdown'
 
 // Assets
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
 
 const POSTS_PER_PAGE = 10
 
-const Home = ({ data: { loading, error, persons, networkStatus }}) => {
+const Home = ({ data: { loading, error, persons }}) => {
   if (error) return <h1>Error fetching people!</h1>
   if (persons) {
     return (
-      <section>
-        <div>
-          <div className="flex">
-            <Link to="/buyers" className="w-1/3 bg-white py-4 text-center">
-              <div className='border-2 border-grey-lighter rounded-lg p-8 mx-4'>
-                <h3>Buyers</h3>
-              </div>
-            </Link>
-            <Link to="/agents" className="w-1/3 bg-white py-4 text-center">
-              <div className='border-2 border-grey-lighter rounded-lg p-8 mx-4'>
-                <h3>Agents</h3>
-              </div>
-            </Link>
-            <Link to="aits" className="w-1/3 bg-white py-4 text-center">
-              <div className='border-2 border-grey-lighter rounded-lg p-8 mx-4'>
-                <h3>AITs</h3>
-              </div>
-            </Link>
-          </div>
+      <section className="">
+        <div className="flex">
+          <Link to="/agents" className="w-1/3 text-center h-screen bg-red">
+            <div className=''>
+              <h3 className="text-white">Agents</h3>
+            </div>
+          </Link>
+          <Link to="/buyers" className="w-1/3 text-center  h-screen bg-grey-dark">
+            <div className=''>
+              <h3 className="text-white">Buyers</h3>
+            </div>
+          </Link>
+          <Link to="/aits" className="w-1/3 text-center h-screen bg-green">
+            <div className=''>
+              <h3 className="text-white">AITs</h3>
+            </div>
+          </Link>
         </div>
+        {/*
         <ul className='list-reset flex flex-wrap'>
           {persons.map(person => (
             <li className='Home-li w-1/3 bg-white py-4' key={`post-${person.id}`}>
@@ -42,7 +40,7 @@ const Home = ({ data: { loading, error, persons, networkStatus }}) => {
                     {person.firstName}
                   </h3>
                   <p className="text-grey-darker uppercase text-xs truncate">
-                    {person.userType} <span className="text-grey mx-2">|</span> {person.age} <span className="text-grey mx-2">|</span> {person.city} <span className="text-grey mx-2">|</span> {person.jobTitle}
+                    {person.customerType} <span className="text-grey mx-2">|</span> {person.age} <span className="text-grey mx-2">|</span> {person.city} <span className="text-grey mx-2">|</span> {person.jobTitle}
                   </p>
                 </div>
                 <div className="w-full block px-6">
@@ -61,6 +59,7 @@ const Home = ({ data: { loading, error, persons, networkStatus }}) => {
             </li>
           ))}
         </ul>
+        */}
       </section>
     )
   }
@@ -93,7 +92,7 @@ export const persons = gql`
       dateJoined
       datePurchased
       website
-      userType
+      customerType
     }
   }
 `

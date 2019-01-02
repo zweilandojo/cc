@@ -1,44 +1,32 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 // Assets
 import ojoLogo from '../assets/images/logo-ojo.png'
 
 export default () => (
-  <header className='Header-header fixed pin-t w-full bg-white py-6'>
-    <div className="mx-auto max-w-3xl flex">
+  <header className='Header-header fixed pin-t w-full p-6 border-b border-grey-dark'>
+    <div className="flex">
       <h1 className='flex-1 text-lg font-medium leading-loose'>
-        <Link exact to='/' className="app-logo text-black">
+        <NavLink exact to='/' className="app-logo text-black">
           <img src={ojoLogo} alt="OJO Logo" className="w-8 h-8 float-left mr-4" />
-          <span>Meet Your Users</span>
-        </Link>
+        </NavLink>
       </h1>
-      <nav className='Header-nav pt-2 leading-tight flex-1 text-right'>
-        <Link
+      <div className="text-center">
+        <NavLink
           to='/'
-          className='Header-navLink px-4'
+          className="block uppercase text-white"
         >
-          Home
-        </Link>
-        <Link
-          to='/buyers'
-          className='Header-navLink px-4'
-          params={{ testvalue: "hello" }}
+          Meet Our Users
+        </NavLink>
+      </div>
+      <nav className='Header-nav pt-2 leading-tight flex-1 text-right'>
+        <NavLink
+          to='/create'
+          className='Header-navLink text-white text-3xl leading-tight'
         >
-          Buyers
-        </Link>
-        <Link
-          to='/agents'
-          className='Header-navLink px-4'
-        >
-          Agents
-        </Link>
-        <Link
-          to='/aits'
-          className='Header-navLink px-4'
-        >
-          AITs
-        </Link>
+          +
+        </NavLink>
       </nav>
     </div>
   </header>
