@@ -43,7 +43,7 @@ const Agents = ({ data: {loading, error, persons }}) => {
       </section>
     )
   }
-  return <div className="w-full text-center my-4"><img src={LoadingGif} className="w-16 h-16 mx-auto" alt="Loading person..." /></div>
+  return <div className="w-full text-center my-4 mt-32"><img src={LoadingGif} className="w-16 h-16 mx-auto" alt="Loading person..." /></div>
 }
 
 export const persons = gql`

@@ -11,11 +11,11 @@ const AITs = ({ data: {loading, error, persons }}) => {
   if (error) return <h1>Error fetching people!</h1>
   if (persons) {
     return (
-      <section>
-        <div className="py-4 px-6">
-          <h1 className="text-2xl text-black">Meet our Agents</h1>
-          <p className="text-lg text-grey-dark">Remembering exact details about their clients, knowing what their clients needs are before they do.</p>
-        </div>
+      <section className="pt-32">
+        <header className="px-6 max-w-sm mx-auto text-center text-white mb-6">
+          <h1 className="text-5xl">AITs</h1>
+          <p className="text-lg text-grey-dark">Making connections every day.</p>
+        </header>
         <ul className='flex flex-wrap list-reset'>
           {persons.map(person => (
             <li className='w-1/3 bg-white py-4' key={`post-${person.id}`}>

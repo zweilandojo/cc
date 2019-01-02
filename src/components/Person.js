@@ -6,6 +6,7 @@ import Markdown from 'react-markdown'
 
 // Assets
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
+import eventTesting from '../assets/images/delete-event-testing.png'
 
 const Person = ({ data: { loading, error, person } }) => {
   if (error) return <h1>Error fetching this person!</h1>
@@ -153,16 +154,17 @@ const Person = ({ data: { loading, error, person } }) => {
 
           </div>
           </section>
-          <section id="Events" className="Events text-white">
+          <section id="Events" className="Events mb-32 text-white">
             <h2 className="">Events</h2>
             <div>
+              <img src={eventTesting} alt="events" />
             </div>
           </section>
         </article>
       </div>
     )
   }
-  return <div className="w-full text-center my-4"><img src={LoadingGif} className="w-16 h-16 mx-auto" alt="Loading post..." /></div>
+  return <div className="w-full text-center my-4 mt-32"><img src={LoadingGif} className="w-16 h-16 mx-auto" alt="Loading post..." /></div>
 }
 
 export const singlePerson = gql`

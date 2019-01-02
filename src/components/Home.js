@@ -71,7 +71,7 @@ const Home = ({ data: { loading, error, persons }}) => {
       </main>
     )
   }
-  return <div className="w-full text-center my-4"><img src={LoadingGif} className="w-16 h-16 mx-auto" alt="Loading post..." /></div>
+  return <div className="w-full text-center my-4 mt-32"><img src={LoadingGif} className="w-16 h-16 mx-auto" alt="Loading post..." /></div>
 }
 
 export const persons = gql`
