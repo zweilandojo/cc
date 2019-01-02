@@ -12,7 +12,7 @@ const Person = ({ data: { loading, error, person } }) => {
   if (error) return <h1>Error fetching this person!</h1>
   if (!loading) {
     return (
-      <div className="mt-32">
+      <div className="mt-24">
         <div className="ml-6">
         {(() => {
           switch (person.customerType) {

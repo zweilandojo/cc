@@ -21,19 +21,19 @@ const Buyers = ({ data: {loading, error, persons }}) => {
             <li className='w-1/3 py-4 text-white' key={`post-${person.id}`}>
               <Link to={`/p/${person.id}`} className='block mx-4'>
                 <div className="w-full block px-6">
-                  <div className="rounded overflow-hidden w-64 h-64">
+                  <div className="rounded-full overflow-hidden w-64 h-64">
                     <img
                       alt={person.firstName}
                       src={`https://media.graphcms.com/resize=w:336,fit:crop/${person.photo.handle}`}
                     />
                   </div>
                 </div>
-                <div className='w-full px-6 mb-4'>
+                <div className='w-full text-center px-6 mb-4'>
                   <h3 className="text-xl my-2 pt-0 text-white">
-                    {person.firstName}
+                    {person.firstName} {person.lastName}
                   </h3>
                   <p className="text-grey-darker uppercase text-xs truncate">
-                    {person.city}
+                    {person.city} {person.state}
                   </p>
                 </div>
               </Link>
