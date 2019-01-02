@@ -32,7 +32,7 @@ const Person = ({ data: { loading, error, person } }) => {
             </div>
             <div className='w-full px-6 mb-4'>
               <h1 className="text-5xl pt-2 text-white">
-                {person.firstName}
+                {person.firstName} {person.lastName}
               </h1>
               <p className="text-grey text-sm tracking-wide uppercase truncate">
                 {person.customerType} <span className="text-grey mx-2">|</span> {person.age} <span className="text-grey mx-2">|</span> {person.city} <span className="text-grey mx-2">|</span> {person.jobTitle}
