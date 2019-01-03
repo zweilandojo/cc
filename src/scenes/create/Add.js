@@ -206,7 +206,7 @@ const CreatePerson = () => {
             </div>
             <div className="my-3">
               <textarea
-                className="w-full py-3 h-16 text-lg bg-transparent text-white border-b border-grey-darkest"
+                className="w-full p-2 py-3 h-16 text-lg bg-transparent text-white border-b border-grey-darkest"
                 ref={node => {
                   painPoints = node;
                 }}

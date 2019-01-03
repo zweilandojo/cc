@@ -1,19 +1,28 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import gql from 'graphql-tag'
-import { graphql } from 'react-apollo'
+import { graphql, Mutation } from 'react-apollo'
 import Markdown from 'react-markdown'
 
 // Assets
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
 import eventTesting from '../assets/images/delete-event-testing.png'
 
+// Mutations
+export const DELETE_PERSON = gql`
+  mutation deletePerson($id: ID!) {
+    deletePerson(where: {id: $id }) {
+      id
+    }
+  }
+`
+
 const Person = ({ data: { loading, error, person } }) => {
   if (error) return <h1>Error fetching this person!</h1>
   if (!loading) {
     return (
       <div className="mt-24">
-        <div className="ml-6">
+        <div className="mx-6">
         {(() => {
           switch (person.customerType) {
             case "Buyer":   return <Link to="/buyers" className="text-grey text-sm tracking-wide uppercase">&larr; Back to Buyers</Link>;
@@ -21,6 +30,25 @@ const Person = ({ data: { loading, error, person } }) => {
             case "AIT":   return <Link to="/aits" className="text-grey text-sm tracking-wide uppercase">&larr; Back to AITs</Link>;
           }
         })()}
+
+        <Mutation mutation={DELETE_PERSON}>
+          {(deletePerson, { data }) => (
+            <button
+              className="delete float-right text-grey underline"
+              onClick={e => {
+                e.preventDefault();
+                deletePerson({
+                  variables: {
+                    id: person.id
+                  }
+                });
+              }}
+            >
+              Delete Customer
+            </button>
+          )}
+        </Mutation>
+
         </div>
         <article className="max-w-xl mx-auto">
           <header className="text-center">
