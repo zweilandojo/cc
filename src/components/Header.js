@@ -22,7 +22,7 @@ export default () => (
       </div>
       <div className="flex-1 w-1/3">
         <NavLink
-          to='/create'
+          to='/add'
           className='Header-navLink Header-actionLink px-10 text-white uppercase font-bold text-sm tracking-wider'
         >
           + CREATE

@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import Markdown from 'react-markdown'
 
 // Assets
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
@@ -22,10 +21,17 @@ const Buyers = ({ data: {loading, error, persons }}) => {
               <Link to={`/p/${person.id}`} className='block mx-4'>
                 <div className="w-full block px-6">
                   <div className="rounded-full overflow-hidden w-64 h-64">
-                    <img
-                      alt={person.firstName}
-                      src={`https://media.graphcms.com/resize=w:336,fit:crop/${person.photo.handle}`}
-                    />
+                    {person.photo !== null &&
+                      <img
+                        alt={person.firstName + " " + person.lastName}
+                        src={`https://media.graphcms.com/resize=w:336,fit:crop/${person.photo.handle}`}
+                      />
+                    } else {
+                      <img
+                        alt={person.firstName + " " + person.lastName}
+                        src="https://placehold.it/256x256"
+                      />
+                    }
                   </div>
                 </div>
                 <div className='w-full text-center px-6 mb-4'>
@@ -48,7 +54,7 @@ const Buyers = ({ data: {loading, error, persons }}) => {
 
 export const persons = gql`
   query postsWithTag($customerType: String!) {
-    persons(where: { customerType: $customerType }) {
+    persons(orderBy: createdAt_DESC, where: {customerType: $customerType}) {
       id
       firstName
       lastName

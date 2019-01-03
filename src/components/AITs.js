@@ -31,10 +31,17 @@ const AITs = ({ data: {loading, error, persons }}) => {
                 <div className="w-full block px-6">
                   <Link to={`/p/${person.id}`} className='block'>
                     <div className="rounded overflow-hidden h-64">
-                      <img
-                        alt={person.firstName}
-                        src={`https://media.graphcms.com/resize=w:614,fit:crop/${person.photo.handle}`}
-                      />
+                      {person.photo !== null &&
+                        <img
+                          alt={person.firstName + " " + person.lastName}
+                          src={`https://media.graphcms.com/resize=w:336,fit:crop/${person.photo.handle}`}
+                        />
+                      } else {
+                        <img
+                          alt={person.firstName + " " + person.lastName}
+                          src="https://placehold.it/256x256"
+                        />
+                      }
                     </div>
                   </Link>
                 </div>
@@ -52,7 +59,7 @@ const AITs = ({ data: {loading, error, persons }}) => {
 
 export const persons = gql`
   query postsWithTag($customerType: String!) {
-    persons(where: { customerType: $customerType }) {
+    persons(orderBy: createdAt_DESC, where: { customerType: $customerType }) {
       id
       firstName
       lastName

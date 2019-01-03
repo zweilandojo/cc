@@ -8,7 +8,7 @@ import Agents from './components/Agents'
 import Buyers from './components/Buyers'
 import AITs from './components/AITs'
 
-import Create from './scenes/create/Create'
+import CreatePerson from './scenes/create/Add'
 import About from './components/About'
 
 const App = () => (
@@ -22,7 +22,7 @@ const App = () => (
         <Route path='/aits' component={AITs} />
         <Route path='/p/:slug' component={Person} />
 
-        <Route path='/create' component={Create} />
+        <Route path='/add' component={CreatePerson} />
         <Route path='/about' component={About} />
       </main>
     </div>

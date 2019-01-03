@@ -5,8 +5,6 @@ import gql from 'graphql-tag'
 
 // Assets
 import LoadingGif from '../assets/images/Spinner-0.5s-200px.gif'
-import agentBG from '../assets/images/customer-types/agent.png'
-
 
 // Components
 import Footer from '../components/Footer'

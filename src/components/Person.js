@@ -25,10 +25,17 @@ const Person = ({ data: { loading, error, person } }) => {
         <article className="max-w-xl mx-auto">
           <header className="text-center">
             <div className="mx-auto w-48 h-48 bg-black rounded-full overflow-hidden">
-              <img
-                alt={person.firstName}
-                src={`https://media.graphcms.com/resize=w:240,fit:crop/${person.photo.handle}`}
-              />
+              {person.photo !== null &&
+                <img
+                  alt={person.firstName + " " + person.lastName}
+                  src={`https://media.graphcms.com/resize=w:336,fit:crop/${person.photo.handle}`}
+                />
+              } {
+                <img
+                  alt={person.firstName + " " + person.lastName}
+                  src="https://placehold.it/256x256"
+                />
+              }
             </div>
             <div className='w-full px-6 mb-4'>
               <h1 className="text-5xl pt-2 text-white">
